@@ -1,0 +1,140 @@
+*,
+*::before,
+*::after{
+   font-family: inherit;
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    width: 100%;
+    font-family: 'Montserrat',cursive, sans-serif;
+    background: #eee;
+}
+
+.calculator{
+    max-width: 22rem;
+    width: 95%;
+    margin: 5rem auto;
+    margin-bottom: 1rem;
+    padding: 3rem 1.5rem;;
+    box-shadow: inset 3px 4px 5px rgb(255, 255,255, .5),
+        2px 2px 3px rgba(0,0,0,.9),
+        inset -4px -5px 3px rgba(0,0,0,.3);
+    background-color: rgb(9, 0, 87);
+    border-radius: 1.5rem;
+}
+
+.calculator__display{
+    width: 100%;
+    height: 10rem;
+    box-shadow: inset 2px 2px 5px rgb(255, 255,255, .1),
+    5px 5px 7px rgba(0,0,0,.12);
+    background:  rgba(11, 5, 70, 0.548);
+    padding: .9rem;
+    margin-top: 3rem;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.calculator__display-small{
+    width: 100%;
+    padding: 1rem;
+    overflow: auto;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+.key.is-depressed{
+    background: rgba(226, 35, 230, 0.89);
+}
+
+.calculator__display-main{
+    font-size: 1.7rem;
+    font-weight: 400;
+    color: rgb(246, 127, 57);
+    text-align: right;
+    overflow-x: auto;
+    padding-right: 1rem;
+}
+
+.calculator__keys{
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+}
+
+.key{
+    height: 3rem;
+    border-radius: .4rem;
+    font-size: 1.5rem;
+    border: 0;
+    padding: .5rem;
+    background: rgba(196, 0, 198,.2);
+    color: #fff;
+    box-shadow: -1.5px -1.5px 3px rgba(255, 255,255, .16),
+    7px 7px 10px rgba(0,0,0,.12);
+    cursor: pointer;
+}
+
+.key:focus{
+    outline: none;
+}
+
+.calculator__keys .key{
+    transform: translate3d(0,0,0);
+    overflow: hidden;
+}
+
+.calculator__keys .key::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:100%;
+    background-image: radial-gradient(circle, #eee 10%, transparent 10.01%);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    transform: scale(20);
+    opacity: 0;
+    transition: transform .3s, opacity .3s;
+}
+
+.calculator__keys .key:active::after{
+    transform: scale(0);
+    opacity: 1;
+    transition: 0s;
+}
+
+
+
+
+[data-action= "clear"]{
+    grid-column: span 2;
+}
+
+.zero{
+    grid-column: span 2;
+}
+
+.calculate{
+    background: rgb(246, 127, 57);
+    color: #fff;
+}
+
+@media (max-width: 336px){
+    .calculator{
+        padding: 1rem;
+        gap: 7px;
+    }
+
+    .calculator__keys{
+        gap: .9rem;
+    }
+}
